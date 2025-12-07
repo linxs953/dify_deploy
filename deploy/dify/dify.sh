@@ -169,6 +169,20 @@ sed -i "s/^EXPOSE_NGINX_PORT=.*/EXPOSE_NGINX_PORT=${user_port}/" .env
 current_port=$(grep "^EXPOSE_NGINX_PORT=" .env | cut -d'=' -f2)
 log_info "✅ 配置已更新! EXPOSE_NGINX_PORT 目前设置为: ${current_port}"
 
+# 配置插件签名验证
+log_info "配置插件签名验证 (设置为 false)..."
+if grep -q "^FORCE_VERIFYING_SIGNATURE=" .env; then
+    sed -i 's/^FORCE_VERIFYING_SIGNATURE=.*/FORCE_VERIFYING_SIGNATURE=false/' .env
+else
+    echo "FORCE_VERIFYING_SIGNATURE=false" >> .env
+fi
+
+if grep -q "^ENFORCE_LANGGENIUS_PLUGIN_SIGNATURES=" .env; then
+    sed -i 's/^ENFORCE_LANGGENIUS_PLUGIN_SIGNATURES=.*/ENFORCE_LANGGENIUS_PLUGIN_SIGNATURES=false/' .env
+else
+    echo "ENFORCE_LANGGENIUS_PLUGIN_SIGNATURES=false" >> .env
+fi
+
 
 # 6. 启动服务
 echo -e "\n${YELLOW}>>> [6/6] 启动 Dify 服务 (Docker Compose)...${NC}"
