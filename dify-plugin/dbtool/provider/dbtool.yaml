@@ -1,0 +1,94 @@
+identity:
+  author: "linxs953"
+  name: "dbtool"
+  label:
+    en_US: "dbtool"
+    zh_Hans: "dbtool"
+    pt_BR: "dbtool"
+    ja_JP: "dbtool"
+  description:
+    en_US: "数据库工具"
+    zh_Hans: "数据库工具"
+    pt_BR: "数据库工具"
+    ja_JP: "数据库工具"
+  icon: "icon.svg"
+
+#########################################################################################
+# If you want to support OAuth, you can uncomment the following code.
+#########################################################################################
+# oauth_schema:
+#   client_schema:
+#     - name: "client_id"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client ID"
+#         zh_Hans: "请输入你的 Client ID"
+#         pt_BR: "Insira seu Client ID"
+#       help:
+#         en_US: "Client ID is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client ID 用于认证请求到 example.com API。"
+#         pt_BR: "Client ID é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client ID"
+#         en_US: "Client ID"
+#     - name: "client_secret"
+#       type: "secret-input"
+#       required: true
+#       url: https://example.com/oauth/authorize
+#       placeholder:
+#         en_US: "Please input your Client Secret"
+#         zh_Hans: "请输入你的 Client Secret"
+#         pt_BR: "Insira seu Client Secret"
+#       help:
+#         en_US: "Client Secret is used to authenticate requests to the example.com API."
+#         zh_Hans: "Client Secret 用于认证请求到 example.com API。"
+#         pt_BR: "Client Secret é usado para autenticar solicitações à API do example.com."
+#       label:
+#         zh_Hans: "Client Secret"
+#         en_US: "Client Secret"
+#   credentials_schema:
+#     - name: "access_token"
+#       type: "secret-input"
+#       label:
+#         zh_Hans: "Access Token"
+#         en_US: "Access Token"
+
+tools:
+  - tools/get_table_definition.yaml
+  - tools/execute_sql.yaml
+extra:
+  python:
+    source: provider/dbtool.py
+credentials_for_provider:
+  host: # 数据库HOST
+    type: text-input # 输入类型为普通文本
+    required: true # 此凭证是必需的
+    label: # 在 Dify UI 中显示的标签 (支持多语言)
+      en_US: MySQL Server Host
+      zh_Hans: MySQL Server主机
+  port: # 数据库端口
+    type: text-input # 输入类型为普通文本
+    required: true # 此凭证是必需的
+    label: # 在 Dify UI 中显示的标签 (支持多语言)
+      en_US: MySQL Server Port
+      zh_Hans: MySQL Server端口
+  user: # 数据库用户名
+    type: text-input # 输入类型为普通文本
+    required: true # 此凭证是必需的
+    label: # 在 Dify UI 中显示的标签 (支持多语言)
+      en_US: user name
+      zh_Hans: 用户名
+  password: # 数据库密码
+    type: secret-input # 输入类型为密码框
+    required: true # 此凭证是必需的
+    label: # 在 Dify UI 中显示的标签 (支持多语言)
+      en_US: password
+      zh_Hans: 密码
+  database: # 数据库名
+    type: text-input # 输入类型为普通文本
+    required: true # 此凭证是必需的
+    label: # 在 Dify UI 中显示的标签 (支持多语言)
+      en_US: database name
+      zh_Hans: 数据库名
