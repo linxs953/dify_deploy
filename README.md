@@ -1,70 +1,43 @@
-# Dify Deployment & Plugins Repository
+# Dify 部署与插件仓库
 
-Welcome to the **Dify Deployment & Plugins** repository! This project is a comprehensive collection of tools designed to streamline the deployment of Dify and extend its capabilities through custom plugins.
+欢迎来到 **Dify 部署与插件** 仓库！本项目旨在提供一套完整的工具集，帮助您快速部署 Dify 并通过自定义插件扩展其能力。
 
-## 📂 Project Structure
+![项目概览图](YOUR_IMAGE_URL_HERE)
 
-The repository is organized into two main sections:
+## 📚 文档导航
 
-*   **`deploy/`**: Contains automated scripts for deploying Dify and related services (like Ollama).
-*   **`dify-plugin/`**: Houses the source code for custom Dify plugins.
+为了方便阅读和管理，我们将文档分为了以下三个部分：
 
----
+### 1. 🚀 [Dify 部署指南](docs/dify-deployment.md)
+详细介绍如何在 Linux 环境下使用自动化脚本一键部署 Dify 及 Docker 环境。
+*   环境检查
+*   Docker 安装
+*   服务启动
 
-## 🚀 Deployment Guide
+### 2. 🦙 [Ollama 部署指南](docs/ollama-deployment.md)
+介绍如何快速部署 Ollama 本地大模型服务，并与 Dify 进行集成。
+*   脚本安装
+*   服务验证
+*   Dify 集成配置
 
-This repository provides shell scripts to facilitate the installation and setup of Dify on Linux environments (specifically optimized for Ubuntu).
-
-### Dify Automatic Deployment
-
-The `deploy/dify/dify.sh` script handles the installation of Docker environment and the deployment of Dify.
-
-**Usage:**
-
-```bash
-cd deploy/dify
-chmod +x dify.sh
-sudo ./dify.sh
-```
-
-**Features:**
-*   Installs Docker & Docker Compose.
-*   Configures system environment.
-*   Deploys Dify services.
-
-### Ollama Deployment
-
-For local LLM support, you can use the Ollama deployment script located at `deploy/ollama/deploy.sh`.
-
-```bash
-cd deploy/ollama
-chmod +x deploy.sh
-./deploy.sh
-```
+### 3. 🧩 [插件开发教程](docs/plugin-development.md)
+以 `dbtool` 为例，手把手教您如何开发、打包和安装 Dify 插件。
+*   插件目录结构
+*   DBTool 示例解析
+*   打包与上传流程
 
 ---
 
-## 🧩 Plugins
+## 📂 项目结构
 
-### DBTool Plugin (`dify-plugin/dbtool`)
+本仓库主要包含以下目录：
 
-**DBTool** is a powerful utility plugin for Dify that allows agents to interact directly with databases.
-
-#### Features
-*   **Execute SQL**: Run SQL queries against a connected database.
-*   **Get Table Definition**: Retrieve schema information and table definitions to help LLMs understand the database structure.
-
-#### Installation
-1.  Pack the plugin using Dify's plugin packaging tool.
-2.  Upload the `.difypkg` file to your Dify instance's plugin management page.
+*   **`deploy/`**: 包含 Dify 和 Ollama 的自动化部署脚本。
+*   **`dify-plugin/`**: 包含自定义 Dify 插件的源代码（如 `dbtool`）。
+*   **`docs/`**: 包含上述分类文档。
 
 ---
 
-## 🛠️ Development
+## 🤝 贡献
 
-### Prerequisites
-*   Docker & Docker Compose
-*   Python 3.10+ (for plugin development)
-
-### Contribution
-Feel free to submit Pull Requests or Issues to improve the deployment scripts or add new features to the plugins.
+欢迎提交 Pull Requests 或 Issues 来改进部署脚本或贡献新的插件！
