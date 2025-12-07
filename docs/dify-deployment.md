@@ -12,7 +12,7 @@ graph TD
     
     subgraph DockerInstallation [Docker 安装]
         InstallDocker --> UpdateApt[更新 apt 索引]
-        UpdateApt --> InstallDeps[安装依赖 ca-certificates, curl]
+        UpdateApt --> InstallDeps["安装依赖 ca-certificates, curl"]
         InstallDeps --> AddGPG[添加 Docker GPG 密钥]
         AddGPG --> AddRepo[添加 Docker 软件源]
         AddRepo --> InstallPkg[安装 docker-ce 等组件]
@@ -24,12 +24,12 @@ graph TD
     CheckDocker -- 运行中 --> ConfigMirror
 
     subgraph MirrorConfig [镜像加速配置]
-        ConfigMirror --> WriteDaemon[写入 daemon.json (mirror.iscas.ac.cn)]
+        ConfigMirror --> WriteDaemon["写入 daemon.json (mirror.iscas.ac.cn)"]
         WriteDaemon --> ReloadDocker[重启 Docker 服务]
     end
 
     ReloadDocker --> CloneRepo[4. 下载 Dify 源码]
-    CloneRepo --> CheckDir{dify 目录是否存在?}
+    CloneRepo --> CheckDir{"dify 目录是否存在?"}
     CheckDir -- 否 --> GitClone[git clone dify]
     CheckDir -- 是 --> SkipClone[跳过克隆]
     
@@ -38,14 +38,14 @@ graph TD
 
     subgraph EnvConfig [环境配置]
         EnterDir --> CheckEnv{检查 .env}
-        CheckEnv -- 不存在 --> CopyEnv[复制 .env.example -> .env]
+        CheckEnv -- 不存在 --> CopyEnv["复制 .env.example -> .env"]
         CheckEnv -- 存在 --> InputPort
         CopyEnv --> InputPort[用户输入 Nginx 端口]
         InputPort --> UpdatePort[更新 EXPOSE_NGINX_PORT]
         UpdatePort --> DisableVerify[禁用插件签名验证]
     end
 
-    DisableVerify --> StartCompose[6. 启动服务 (docker compose up -d)]
+    DisableVerify --> StartCompose["6. 启动服务 (docker compose up -d)"]
     StartCompose --> FixPerms[7. 修复 API 容器权限]
     FixPerms --> Success[输出访问地址]
     Success --> End[结束]
@@ -89,6 +89,7 @@ graph TD
 ![Dify 部署架构图](../img/dify2.png)
 ![Dify 部署架构图](../img/dify3.png)
 ![Dify 部署架构图](../img/dify4.png)
+
 
 
 

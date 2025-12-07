@@ -7,18 +7,18 @@ Ollama 是一个开源的大模型本地运行工具。本指南介绍如何使�
 ```mermaid
 graph TD
     Start[开始部署] --> InstallOllama[1. 安装 Ollama]
-    InstallOllama --> RunInstallScript[执行官方安装脚本 curl | sh]
+    InstallOllama --> RunInstallScript["执行官方安装脚本 curl | sh"]
     
     RunInstallScript --> CheckSystemd{2. 检查 systemctl}
     CheckSystemd -- 存在 --> ConfigureService[配置 Systemd 服务]
-    CheckSystemd -- 不存在 --> SkipConfig[跳过配置 (非 Linux Systemd 环境)]
+    CheckSystemd -- 不存在 --> SkipConfig["跳过配置 (非 Linux Systemd 环境)"]
 
     subgraph ServiceConfiguration [服务配置]
         ConfigureService --> CheckServiceFile{检查 ollama.service 文件}
         CheckServiceFile -- 存在 --> CheckEnv{检查 OLLAMA_HOST}
         CheckServiceFile -- 不存在 --> WarnMissing[警告: 服务文件缺失]
         
-        CheckEnv -- 未配置 --> AddEnv[添加 OLLAMA_HOST=0.0.0.0:11434]
+        CheckEnv -- 未配置 --> AddEnv["添加 OLLAMA_HOST=0.0.0.0:11434"]
         CheckEnv -- 已配置 --> SkipEnv[跳过添加]
         
         AddEnv --> ReloadDaemon[systemctl daemon-reload]
@@ -37,8 +37,8 @@ graph TD
     end
 
     Enable --> Verification[4. 验证与集成]
-    Verification --> VerifyVer[验证版本: ollama --version]
-    VerifyVer --> RunModel[运行模型: ollama run llama3]
+    Verification --> VerifyVer["验证版本: ollama --version"]
+    VerifyVer --> RunModel["运行模型: ollama run llama3"]
     RunModel --> DifyConfig[Dify 后台配置]
     DifyConfig --> End[集成完成]
 ```
